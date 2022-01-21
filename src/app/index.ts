@@ -20,6 +20,10 @@ const configRoutes = () => {
     res.sendStatus(200);
   });
 
+  app.get("/ping", (_req, res) => {
+    res.sendStatus(200);
+  });
+
   // subroute example
 
   const subRouter = express();
