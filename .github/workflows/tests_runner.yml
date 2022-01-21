@@ -6,7 +6,7 @@ on:
       - beta
 
 jobs:
-  deploy:
+  tests_runner:
     runs-on: ubuntu-latest
     environment:
       name: beta
