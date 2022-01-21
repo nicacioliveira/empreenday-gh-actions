@@ -1,20 +1,23 @@
 name: "Api tests runner"
 
 on:
-  push:
-    branches:
-      - beta
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 jobs:
   tests_runner:
     runs-on: ubuntu-latest
     environment:
+      url: "https://thawing-sierra-56257.herokuapp.com/"
       name: beta
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: "14"
 
       - name: install dependencies
         run: yarn --frozen-lockfile --silent
