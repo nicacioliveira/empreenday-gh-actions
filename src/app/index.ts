@@ -44,6 +44,10 @@ const configRoutes = () => {
     res.sendStatus(200);
   });
 
+  subRouter.get("/health3", (_req, res) => {
+    res.sendStatus(200);
+  });
+
   subRouter.use("*", (_req, res) => {
     routes = app.routes;
     res.json(getRoutes(subRouter._router.stack));
