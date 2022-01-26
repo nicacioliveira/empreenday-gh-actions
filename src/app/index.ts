@@ -20,14 +20,19 @@ const configRoutes = () => {
     res.sendStatus(200);
   });
 
+  app.get("/ping", (_req, res) => {
+    res.send("pong");
+  });
+
+  app.get("/who", (req, res) => {
+    console.log(req.headers);
+    res.send(req.headers);
+  });
+
   // subroute example
 
   const subRouter = express();
   app.get("/subRoute", subRouter);
-
-  subRouter.get("/health2", (_req, res) => {
-    res.sendStatus(200);
-  });
 
   subRouter.use("*", (_req, res) => {
     routes = app.routes;
