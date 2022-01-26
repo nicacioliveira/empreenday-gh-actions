@@ -28,6 +28,10 @@ const configRoutes = () => {
     res.send("pong");
   });
 
+  app.get("/empreenday", (_req, res) => {
+    res.send("2022");
+  });
+
   app.get("/ping2", (_req, res) => {
     res.send("pong2");
   });
