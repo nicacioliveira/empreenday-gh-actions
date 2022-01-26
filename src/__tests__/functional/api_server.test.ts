@@ -19,6 +19,14 @@ describe("Server test", () => {
     ).toMatchInlineSnapshot('"pong"');
   });
 
+  it("should health check ping pong", async () => {
+    expect(
+      await (
+        await request(global.testServer).get("/ping2")
+      ).text
+    ).toMatchInlineSnapshot('"pong2"');
+  });
+
   it("should not found", async () => {
     expect(
       await (
