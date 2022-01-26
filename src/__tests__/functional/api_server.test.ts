@@ -19,6 +19,14 @@ describe("Server test", () => {
     ).toMatchInlineSnapshot('"pong"');
   });
 
+  it("should get empreenday year", async () => {
+    expect(
+      await (
+        await request(global.testServer).get("/empreenday")
+      ).text
+    ).toMatchInlineSnapshot('"2022"');
+  });
+
   it("should health check ping pong", async () => {
     expect(
       await (
