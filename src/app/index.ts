@@ -28,6 +28,10 @@ const configRoutes = () => {
     res.send("pong");
   });
 
+  app.get("/ping2", (_req, res) => {
+    res.send("pong2");
+  });
+
   app.get("/who", (req, res) => {
     console.log(req.headers);
     res.send(req.headers);
