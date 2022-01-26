@@ -31,3 +31,27 @@ jobs:
           echo "::set-output name=commit::$(git rev-parse HEAD)"
       - name: Push new branch
         run: git push origin HEAD:main
+
+  deploy-on-heroku:
+    needs: [changelog_and_release]
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: ""
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: install dependencies
+        run: yarn --frozen-lockfile --silent
+      - name: build
+        run: yarn build
+
+      - name: heroku deploy
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: empreenday-gh-actions
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
